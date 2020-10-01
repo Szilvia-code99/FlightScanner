@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AjA9nZRIOeybw3JW0FxRQFehajz6FfOLMwR1PpIBrh7SDXUgo9LwTVzZeliZ45ywu+C81vOUpOZd/bTdp6FP8g==",
+  "dgSpecHash": "16eUUDmBHMLUfbYdbYZWpPk6t3Vr9o8tX65y1kPMKEfaYXI3mlVEYmH145iQ8Nu/7lf5OiOkalbu0nmdG+Bb1g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Szilvia\\Desktop\\Trimble2020\\TrimbleWorkshop\\FlightScanner\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\Szilvia\\Desktop\\Trimble2020\\FlightScanner\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Szilvia\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Szilvia\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
