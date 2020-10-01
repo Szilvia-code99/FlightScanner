@@ -29,6 +29,10 @@ namespace API
         {
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
+            services.AddCors(
+                o => o.AddPolicy(
+                    "MyPolicy",builder => {
+                     builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();}));
         //    services.AddDbContext<DataContext>(options => {
           //  options.UseSqlServer("Server=.;Database=User;Trusted_Connection=True;User Id=;Password=;Integrated Security=false;");
 
@@ -47,13 +51,17 @@ namespace API
 
             app.UseRouting();
 
+            app.UseCors("MyPolicy");
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+
+            
         }
-    }
+      }
     }
 
