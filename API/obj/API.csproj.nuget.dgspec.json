@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Szilvia\\Desktop\\Trimble2020\\FlightScanner\\API\\API.csproj": {}
+    "c:\\Users\\Szilvia\\Desktop\\Trimble2020\\FlightScanner\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Szilvia\\Desktop\\Trimble2020\\FlightScanner\\API\\API.csproj": {
+    "c:\\Users\\Szilvia\\Desktop\\Trimble2020\\FlightScanner\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Szilvia\\Desktop\\Trimble2020\\FlightScanner\\API\\API.csproj",
+        "projectUniqueName": "c:\\Users\\Szilvia\\Desktop\\Trimble2020\\FlightScanner\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\Szilvia\\Desktop\\Trimble2020\\FlightScanner\\API\\API.csproj",
+        "projectPath": "c:\\Users\\Szilvia\\Desktop\\Trimble2020\\FlightScanner\\API\\API.csproj",
         "packagesPath": "C:\\Users\\Szilvia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Szilvia\\Desktop\\Trimble2020\\FlightScanner\\API\\obj\\",
+        "outputPath": "c:\\Users\\Szilvia\\Desktop\\Trimble2020\\FlightScanner\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Szilvia\\AppData\\Roaming\\NuGet\\NuGet.Config",
