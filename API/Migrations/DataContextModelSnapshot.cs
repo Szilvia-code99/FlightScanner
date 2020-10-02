@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace API.Data.Migrations
+namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
     partial class DataContextModelSnapshot : ModelSnapshot
@@ -24,9 +24,6 @@ namespace API.Data.Migrations
 
                     b.Property<byte[]>("hash")
                         .HasColumnType("BLOB");
-
-                    b.Property<string>("password")
-                        .HasColumnType("TEXT");
 
                     b.Property<byte[]>("salt")
                         .HasColumnType("BLOB");

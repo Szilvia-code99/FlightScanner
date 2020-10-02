@@ -6,6 +6,7 @@ using API.Entities;
 using System.Text;
 using API.Data.DTO;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
@@ -22,9 +23,9 @@ namespace API.Controllers
 
         public async Task<ActionResult<User>> Register(RegisterDTO registerData){
         
-        if (UserExists(registerData.userName)){
-         return BadRequest();
-        } else {
+        if (await UserExists(registerData.userName)){
+         return BadRequest("Username already registered");
+        } 
 
         using var hmac=new HMACSHA512();
 
@@ -38,11 +39,35 @@ namespace API.Controllers
         await _dataContext.SaveChangesAsync();
          
          return user;
-         }
+         
         }
 
-        private bool UserExists(string username){
-          return _dataContext.Users.Any(x => x.userName ==username.ToLower());
+        private async Task<bool> UserExists(string username){
+          return await _dataContext.Users.AnyAsync(x => x.userName.ToLower() == username.ToLower());
+        }
+
+        
+        [HttpPost("login")]
+
+        public async Task<ActionResult<User>> Login(LoginDTO loginData){
+        
+        var user= await _dataContext.Users
+        .FirstOrDefaultAsync(x => x.userName == loginData.userName);
+
+        if (user == null){
+         return Unauthorized("Invalid username");
+        } 
+
+        using var hmac=new HMACSHA512(user.salt);
+
+        var computedHash= hmac.ComputeHash(Encoding.UTF8.GetBytes(loginData.password));
+
+        for( int i=0;i<computedHash.Length;i++){
+            if (computedHash[i] != user.hash[i]) {
+                return Unauthorized("Invalid password or username");
+            }
+        }
+         return user;
         }
     }
 }
