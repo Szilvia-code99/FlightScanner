@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace API.Migrations
+namespace API.Data.Migrations
 {
     public partial class InitialCreate : Migration
     {
@@ -14,6 +14,7 @@ namespace API.Migrations
                     userId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     userName = table.Column<string>(nullable: true),
+                    password = table.Column<string>(nullable: true),
                     hash = table.Column<byte[]>(nullable: true),
                     salt = table.Column<byte[]>(nullable: true)
                 },
