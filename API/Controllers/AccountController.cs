@@ -58,7 +58,7 @@ namespace API.Controllers
 
         public async Task<ActionResult<UserDTO>> Login(LoginDTO loginData){
         
-        var user= await _dataContext.Users
+        var user = await _dataContext.Users
         .FirstOrDefaultAsync(x => x.userName == loginData.userName);
 
         if (user == null){

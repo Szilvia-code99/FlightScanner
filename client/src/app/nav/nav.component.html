@@ -43,11 +43,11 @@
     <h2>Login</h2>
 
 
-<form #loginForm="ngForm" class="login-form mt-2 mt-md-0" (ngSubmit)="login()">
+<form *ngIf=":!loggedIn" #loginForm="ngForm" class="login-form mt-2 mt-md-0" (ngSubmit)="login()">
   <div class="form-group">
     <input
      name="username"
-     [(ngModel)]="model.username"
+     [(ngModel)]="model.userName"
      class="form-control mr-sm-2"
      type="text"
 
