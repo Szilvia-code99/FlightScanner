@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kGixqrR85FgJVyW7S+gC27BGz9XH2ghKmchvow9XyxgJMMnMAV/6F2lCUShYq2WDi6gjySEFNu6Jwkw5x1YLgw==",
+  "dgSpecHash": "9qEZl9VI+nX6T4RIRnWHCdpxV+MWekFXM3XhVRqjRk7y5u6YZ/DLWrNvpRKCCe3JUEzo9yq+Ft/hTGMMl3QwVw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Szilvia\\Desktop\\Trimble2020\\FlightScanner\\api\\API.csproj",
+  "projectFilePath": "C:\\Users\\Szilvia\\Desktop\\Trimble2020\\FlightScanner\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Szilvia\\.nuget\\packages\\bootstrap\\4.5.2\\bootstrap.4.5.2.nupkg.sha512",
     "C:\\Users\\Szilvia\\.nuget\\packages\\jquery\\3.0.0\\jquery.3.0.0.nupkg.sha512",

@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace API.Data.Migrations
+namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201001181642_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20201004154912_MyFirstMigration")]
+    partial class MyFirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,9 +26,6 @@ namespace API.Data.Migrations
 
                     b.Property<byte[]>("hash")
                         .HasColumnType("BLOB");
-
-                    b.Property<string>("password")
-                        .HasColumnType("TEXT");
 
                     b.Property<byte[]>("salt")
                         .HasColumnType("BLOB");

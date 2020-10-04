@@ -43,12 +43,14 @@
     <h2>Login</h2>
 
 
-<form #loginForm="ngForm" class="login-form mt-2 mt-md-0" autocomplete="off">
+<form #loginForm="ngForm" class="login-form mt-2 mt-md-0" (ngSubmit)="login()">
   <div class="form-group">
     <input
      name="username"
+     [(ngModel)]="model.username"
      class="form-control mr-sm-2"
      type="text"
+
      placeholder="Username">
   </div>
   
@@ -56,6 +58,7 @@
 
      <input
      name="password"
+     [(ngModel)]="model.password"
      class="form-control mr-sm-2"
      type="text"
      placeholder="Password">

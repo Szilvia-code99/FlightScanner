@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace API.Data.Migrations
+namespace API.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class MyFirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,6 @@ namespace API.Data.Migrations
                     userId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     userName = table.Column<string>(nullable: true),
-                    password = table.Column<string>(nullable: true),
                     hash = table.Column<byte[]>(nullable: true),
                     salt = table.Column<byte[]>(nullable: true)
                 },
