@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "koWk9tGGCLN4YbZJrU/h5jYwMlrAppDWPH8ph5kNfAYeRwmcoB3xfqA7nudU71Z2GD/YsddQgTRIqiTp4/6WVg==",
+  "dgSpecHash": "kGixqrR85FgJVyW7S+gC27BGz9XH2ghKmchvow9XyxgJMMnMAV/6F2lCUShYq2WDi6gjySEFNu6Jwkw5x1YLgw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Szilvia\\Desktop\\Trimble2020\\FlightScanner\\api\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Szilvia\\.nuget\\packages\\bootstrap\\4.5.2\\bootstrap.4.5.2.nupkg.sha512",
     "C:\\Users\\Szilvia\\.nuget\\packages\\jquery\\3.0.0\\jquery.3.0.0.nupkg.sha512",
+    "C:\\Users\\Szilvia\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.8\\microsoft.aspnetcore.authentication.jwtbearer.3.1.8.nupkg.sha512",
     "C:\\Users\\Szilvia\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Szilvia\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\Szilvia\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

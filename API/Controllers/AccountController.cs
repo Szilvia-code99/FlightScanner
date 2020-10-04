@@ -7,6 +7,7 @@ using System.Text;
 using API.Data.DTO;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using API.Interfaces;
 
 namespace API.Controllers
 {
@@ -14,14 +15,17 @@ namespace API.Controllers
     {
         private readonly DataContext _dataContext;
 
-        public AccountController(DataContext dataContext)
+        private readonly ITokenService _tokenService;
+
+        public AccountController(DataContext dataContext,ITokenService tokenService)
         {
             _dataContext = dataContext;
+            _tokenService = tokenService;
         }
 
         [HttpPost("register")]
 
-        public async Task<ActionResult<User>> Register(RegisterDTO registerData){
+        public async Task<ActionResult<UserDTO>> Register(RegisterDTO registerData){
         
         if (await UserExists(registerData.userName)){
          return BadRequest("Username already registered");
@@ -38,7 +42,10 @@ namespace API.Controllers
         _dataContext.Users.Add(user);
         await _dataContext.SaveChangesAsync();
          
-         return user;
+         return new UserDTO{
+             userName = user.userName,
+             token = _tokenService.CreateToken(user)
+         };
          
         }
 
@@ -49,7 +56,7 @@ namespace API.Controllers
         
         [HttpPost("login")]
 
-        public async Task<ActionResult<User>> Login(LoginDTO loginData){
+        public async Task<ActionResult<UserDTO>> Login(LoginDTO loginData){
         
         var user= await _dataContext.Users
         .FirstOrDefaultAsync(x => x.userName == loginData.userName);
@@ -67,7 +74,11 @@ namespace API.Controllers
                 return Unauthorized("Invalid password or username");
             }
         }
-         return user;
+       
+         return new UserDTO{
+             userName=user.userName,
+             token=_tokenService.CreateToken(user)
+         };
         }
     }
 }
