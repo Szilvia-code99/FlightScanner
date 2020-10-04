@@ -17,6 +17,7 @@ export class AppComponent implements OnInit{
   this.setCurrentUser();
   }
 
+ 
   constructor(private httpClient: HttpClient , private accountService: AccountService){}
 
   getUsers() {
