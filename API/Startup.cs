@@ -70,7 +70,7 @@ namespace API
 
             app.UseCors("MyPolicy");
 
-            //app.UseAuthentication();
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
@@ -78,8 +78,6 @@ namespace API
             {
                 endpoints.MapControllers();
             });
-
-            
         }
       }
     }

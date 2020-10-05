@@ -7,14 +7,25 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './nav/nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 
 
-
+const routes: Routes = [
+  { path: 'app-login', component: LoginComponent },
+  { path: 'app-register', component: RegisterComponent },
+ { path: '',   redirectTo: 'app-nav', pathMatch: 'full' }, // redirect to `nav-component`}
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
    ],
   imports: [
     BrowserModule,
@@ -22,7 +33,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

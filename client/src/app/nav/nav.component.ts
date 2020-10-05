@@ -1,5 +1,5 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from '../services/account.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,37 +7,15 @@ import { AccountService } from '../services/account.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-model: any = {};
-loggedIn : boolean;
-  constructor(private accountService : AccountService) { }
+  loadLoginComponent = false;
 
-  ngOnInit(): void {
-   this.getCurrentUser();
-  }
+  constructor() {}
 
+  ngOnInit() {}
 
-  login(): void {
-    this.accountService.login(this.model).subscribe(response =>{
-      console.log(response);
-      this.loggedIn = true;
-    }, error => {
-      console.log(error);
-    });
-  }
-
-    logout(): void {
-      this.accountService.logout();
-      this.loggedIn = false;
-    }
-
-    getCurrentUser() {
-      this.accountService.currentUser.subscribe(user => {
-        this.loggedIn = !!user;
-      }, error => {
-        console.log(error);
-      })
-    }
-
+  loadLogInComponent() {
+    this.loadLoginComponent = true;
+   }
    
 }
 
