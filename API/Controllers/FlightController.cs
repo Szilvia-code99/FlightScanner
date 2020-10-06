@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
 using API.Data.DTO;
@@ -36,7 +37,6 @@ namespace API.Controllers
         [HttpPost("create")]
         public async Task<ActionResult<FlightDTO>> Register(FlightDTO flightData){
 
-
         var flight = new Flight{
         airlineName=flightData.airlineName, 
         origin=flightData.origin,
@@ -47,14 +47,20 @@ namespace API.Controllers
         price=flightData.price
         };
 
-      
         _dataContext.Flights.Add(flight);
         await _dataContext.SaveChangesAsync();
          
        return flightData;
-         
         }
 
+    [HttpDelete("delete")]
+     [AllowAnonymous]
+    public async Task<ActionResult<string>> Delete(int flightId) {  
+    Flight emp = _dataContext.Flights.Where(x => x.flightId == flightId).Single <Flight> ();  
+    _dataContext.Flights.Remove(emp);  
+    await _dataContext.SaveChangesAsync();  
+    return "Record has successfully Deleted";  
+}  
     
     }
  }

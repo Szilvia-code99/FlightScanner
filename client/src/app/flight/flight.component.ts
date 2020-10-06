@@ -31,5 +31,9 @@ flights: any;
     })
   }
 
+  deleteFlight() {
+    this.flightService.deleteFlight(1);
+  }
+
 
 }
