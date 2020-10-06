@@ -1,7 +1,6 @@
-import { Component,OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { AccountService } from './services/account.service';
-import { User } from './Entities/user';
+import { User } from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -12,26 +11,14 @@ export class AppComponent implements OnInit{
   title = 'Flight reservation';
   users: any;
 
+  constructor(private accountService: AccountService){}
+
   ngOnInit(): void{
-  this.getUsers();
-  this.setCurrentUser();
-  }
-
- 
-  constructor(private httpClient: HttpClient , private accountService: AccountService){}
-
-  getUsers() {
-    this.accountService.getUsers().
-    subscribe(
-      response => {this.users = response; },
-       error => {console.log(error);
-      });
+    this.setCurrentUser();
   }
 
   setCurrentUser() {
     const user: User = JSON.parse(localStorage.getItem('user'));
     this.accountService.setCurrentUser(user);
   }
- 
 }
-

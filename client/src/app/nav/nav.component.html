@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-sm navbar-dark">
   <!-- Brand -->
   <a class="navbar-brand" href="#">Logo</a>
@@ -6,25 +5,24 @@
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a routerLink="/app-flight"  routerLinkActive='active' class="nav-link">Flights</a>
+      <a class="nav-link" routerLink="/app-flight" routerLinkActive='active'>Flights</a>
     </li>
     <li class="nav-item">
-      <a routerLink="/app-login" routerLinkActive='active' class="nav-link" >Log In</a>
+      <a class="nav-link" routerLink="/app-login" routerLinkActive='active'>LogIn</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/app-register" routerLinkActive='active'>Register</a>
     </li>
 
     <!-- Dropdown -->
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        Dropdown link
+    <li class="nav-item dropdown" *ngIf="(accountService.currentUser | async) as user" >
+      <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+        Welcome, {{user.userName | titlecase}}
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Link 1</a>
-        <a class="dropdown-item" href="#">Link 2</a>
-        <a class="dropdown-item" href="#">Link 3</a>
+        <a class="dropdown-item" routerLink='/app-flight'>Go to CRUD testing</a>
+        <a class="dropdown-item" (click)="logout()">Logout</a>
       </div>
     </li>
   </ul>
 </nav>
-
-
-  <app-login *ngIf="loadLoginComponent"></app-login>

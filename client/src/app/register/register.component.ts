@@ -8,8 +8,8 @@ import { AccountService } from '../services/account.service';
 })
 export class RegisterComponent implements OnInit {
   model: any = {};
-  @Output() cancelRegister = new EventEmitter(); 
-  
+  @Output() cancelRegister = new EventEmitter();
+
   constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
@@ -23,5 +23,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-
+  cancel() {
+    this.cancelRegister.emit(false);
+  }
 }

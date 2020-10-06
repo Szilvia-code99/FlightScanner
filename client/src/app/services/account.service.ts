@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
-import { User } from '../Entities/user';
+import { User } from '../models/user';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -43,14 +43,8 @@ export class AccountService {
     this.currentUserSource.next(user);
   }
 
-  logout(): void{
+  logout() {
     localStorage.removeItem('user');
     this.currentUserSource.next(null);
   }
-  
-  getUsers(){
-    return this.http.get(
-     'http://localhost:5001/api/users');
-    
-   }
 }

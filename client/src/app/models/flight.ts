@@ -7,4 +7,3 @@ export interface Flight {
     totalSeats: number;
     price: number;
  }
- 
