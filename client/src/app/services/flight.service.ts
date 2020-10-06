@@ -14,7 +14,7 @@ export class FlightService {
 
   getFlights(){
     return this.http.get(
-      'http://localhost:5001/api/flights');
+      'http://localhost:5001/api/flight');
   }
 
  createFlight(model: any){

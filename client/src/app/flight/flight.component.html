@@ -1,8 +1,9 @@
 <div class="login-reg-panel">
     <div class="register-info-box">
-      <h2>Don't have an account?</h2>
-      <p>Lorem ipsum dolor sit amet</p>
-      <label id="label-login" for="log-login-show" >View flights</label>
+      <label id="label-login" for="log-login-show" (click)="getFlights()" >View flights</label>
+      <div *ngFor="let flight of flights">
+        <p>airline name: {{flight.airlineName}}</p>
+      </div>
       <input type="radio" name="active-log-panel" id="log-login-show">
     </div>
     <div class="white-panel">

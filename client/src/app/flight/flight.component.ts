@@ -8,6 +8,7 @@ import { FlightService } from '../services/flight.service';
 })
 export class FlightComponent implements OnInit {
 model:any={};
+flights: any;
   constructor(private flightService: FlightService) { }
 
   ngOnInit(): void {
@@ -21,5 +22,14 @@ model:any={};
     });
     console.log(this.model);
   }
+
+  getFlights() {
+    this.flightService.getFlights().subscribe(response => {
+      this.flights = response;
+    }, error => {
+      console.log(error);
+    })
+  }
+
 
 }
