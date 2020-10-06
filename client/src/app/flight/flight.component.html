@@ -1,1 +1,80 @@
-<p>flight works!</p>
+<div class="login-reg-panel">
+    <div class="register-info-box">
+      <h2>Don't have an account?</h2>
+      <p>Lorem ipsum dolor sit amet</p>
+      <label id="label-login" for="log-login-show" >View flights</label>
+      <input type="radio" name="active-log-panel" id="log-login-show">
+    </div>
+    <div class="white-panel">
+     <div class="login-form">
+      <h2>Create Flight</h2>
+  
+    <form  #createFlightForm="ngForm" class="login-form mt-2 mt-md-0" (ngSubmit)="createFlight()">
+  
+   
+      <div class="form-group">
+        <input
+         name="airlineName"
+         [(ngModel)]="model.airlineName"
+         class="form-control mr-sm-2"
+         type="text"
+         placeholder="AirlineName">
+      </div>
+      
+       <div class="form-group">
+         <input
+         name="origin"
+         [(ngModel)]="model.origin"
+         class="form-control mr-sm-2"
+         type="text"
+         placeholder="Origin">
+       </div>
+
+       <div class="form-group">
+        <input
+        name="destination"
+        [(ngModel)]="model.destination"
+        class="form-control mr-sm-2"
+        type="text"
+        placeholder="Destination">
+      </div>
+
+      <div class="form-group">
+        <input
+        name="departureTime"
+        [(ngModel)]="model.departureTime"
+        class="form-control mr-sm-2"
+        type="text"
+        placeholder="DepartureTime">
+      </div>
+
+      <div class="form-group">
+        <input
+        name="arrivalTime"
+        [(ngModel)]="model.arrivalTime"
+        class="form-control mr-sm-2"
+        type="text"
+        placeholder="ArrivalTime">
+      </div>
+    
+      <div class="form-group">
+        <input
+        name="totalSeats"
+        [(ngModel)]="model.totalSeats"
+        class="form-control mr-sm-2"
+        type="text"
+        placeholder="TotalSeats">
+      </div>
+
+      <div class="form-group">
+        <input
+        name="price"
+        [(ngModel)]="model.price"
+        class="form-control mr-sm-2"
+        type="text"
+        placeholder="Price">
+      </div>
+    
+         <button class="btn btn-primary btn-outline-succes my-1 my-sm-0" type="submit">Login</button>
+    </form>
+    </div>

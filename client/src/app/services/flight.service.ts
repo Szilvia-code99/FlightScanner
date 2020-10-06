@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Console } from 'console';
 import { map } from 'rxjs/operators';
 import { Flight } from '../Entities/flight';
 
