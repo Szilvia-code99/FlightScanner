@@ -1,0 +1,30 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Console } from 'console';
+import { map } from 'rxjs/operators';
+import { Flight } from '../Entities/flight';
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class FlightService {
+  baseUrl = 'http://localhost:5001/api/';
+
+  constructor(private http: HttpClient) { }
+
+  getFlights(){
+    return this.http.get(
+      'http://localhost:5001/api/flights');
+  }
+
+ createFlight(model: any){
+    return this.http.post(this.baseUrl + 'flight/create', model).pipe(
+      map((response: Flight) => {
+        const flight = response;
+        console.log(flight);
+        }
+      )
+    );
+  }
+}

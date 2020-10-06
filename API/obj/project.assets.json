@@ -6392,11 +6392,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Szilvia\\Desktop\\Trimble2020\\FlightScanner\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\Szilvia\\Desktop\\Trimble2020\\Flight\\FlightScanner\\api\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\Szilvia\\Desktop\\Trimble2020\\FlightScanner\\API\\API.csproj",
+      "projectPath": "C:\\Users\\Szilvia\\Desktop\\Trimble2020\\Flight\\FlightScanner\\api\\API.csproj",
       "packagesPath": "C:\\Users\\Szilvia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Szilvia\\Desktop\\Trimble2020\\FlightScanner\\API\\obj\\",
+      "outputPath": "C:\\Users\\Szilvia\\Desktop\\Trimble2020\\Flight\\FlightScanner\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Szilvia\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AccountService } from '../services/account.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   loggedIn = false;
   loadRegister = false;
   
-  constructor(private accountService : AccountService) { }
+  constructor(private accountService : AccountService, private router: Router) { }
 
   ngOnInit(): void {
     this.getCurrentUser();
@@ -21,9 +22,11 @@ export class LoginComponent implements OnInit {
     this.accountService.login(this.model).subscribe(response =>{
       console.log(response);
       this.loggedIn = true;
+      this.router.navigateByUrl('');
     }, error => {
       console.log(error);
     });
+    console.log(this.model);
   }
 
     logout(): void {

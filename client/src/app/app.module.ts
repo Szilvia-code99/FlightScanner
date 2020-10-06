@@ -11,13 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-
-
-const routes: Routes = [
-  { path: 'app-login', component: LoginComponent },
-  { path: 'app-register', component: RegisterComponent },
- { path: '',   redirectTo: 'app-nav', pathMatch: 'full' }, // redirect to `nav-component`}
-];
+import { FlightComponent } from './flight/flight.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +20,7 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     HomeComponent,
+    FlightComponent,
    ],
   imports: [
     BrowserModule,
@@ -34,7 +29,6 @@ const routes: Routes = [
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
