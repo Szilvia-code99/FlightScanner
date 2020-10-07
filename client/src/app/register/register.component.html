@@ -9,39 +9,59 @@
      <div class="login-form">
       <h2>Register</h2>
 
-  <form *ngIf="!next" #registerForm="ngForm" class="login-form mt-2 mt-md-0" (ngSubmit)="nextForm()">
+  <form *ngIf="!next" [formGroup]="registerForm" class="login-form mt-2 mt-md-0" (ngSubmit)="nextForm()">
+
     <div class="form-group">
       <input
+      [class.is-invalid]='registerForm.get("username").errors && registerForm.get("username").touched'
        name="username"
        class="form-control mr-sm-2"
        type="text"
        formControlName="username"
        placeholder="Username">
+       <div class="invalid-feedback">Please enter a username</div>
     </div>
 
      <div class="form-group">
        <input
+       [class.is-invalid]='registerForm.get("password").errors && registerForm.get("password").touched'
        name="password"
        class="form-control mr-sm-2"
-       type="text"
+       type="password"
        formControlName="password"
        placeholder="Password">
+       <div *ngIf="registerForm.get('password').hasError('required')"  class="invalid-feedback">
+         Please enter a password
+       </div>
+       <div *ngIf="registerForm.get('password').hasError('minlength')"  class="invalid-feedback">
+         Password must be at least 4 characters
+      </div>
+      <div *ngIf="registerForm.get('password').hasError('maxlength')"  class="invalid-feedback">
+        Password must be at most 8 characters
+      </div>
      </div>
 
      <div class="form-group">
       <input
+      [class.is-invalid]='registerForm.get("confirmPassword").errors && registerForm.get("confirmPassword").touched'
       name="confirmpassword"
       class="form-control mr-sm-2"
-      type="text"
+      type="password"
       formControlName="confirmPassword"
       placeholder="Confirm Password">
+      <div *ngIf="registerForm.get('confirmPassword').hasError('required')"  class="invalid-feedback">
+        Please enter a confirm password
+      </div>
+      <div *ngIf="registerForm.get('confirmPassword').hasError('isMatching')"  class="invalid-feedback">
+       Confirm password must match password 
+     </div>
+    
     </div>
-     <button class="btn btn-default mr-2" (click)="cancel()" type="button">Cancel</button>
-     <button class="btn btn-primary btn-outline-succes my-1 my-sm-0" type="submit">Next</button>
+
+
+     <button class="btnNext btn-primary btn-outline-succes my-1 my-sm-0" type="submit">Next</button>
      
-       <p>Form value: {{registerForm.value | json}}</p>
-       <p>Form value: {{registerForm.status | json}}</p>
-  </form>
+    </form>
 
   <form *ngIf="next" #registerrForm="ngForm" class="login-form mt-2 mt-md-0" (ngSubmit)="register()">
     <div class="form-group">

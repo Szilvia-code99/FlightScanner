@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { AccountService } from '../services/account.service';
 
 @Component({
@@ -12,6 +12,7 @@ export class RegisterComponent implements OnInit {
   next = false;
   @Output() cancelRegister = new EventEmitter();
   registerForm: FormGroup;
+  private fb: FormBuilder;
 
   constructor(private accountService: AccountService) { }
 
@@ -40,10 +41,20 @@ export class RegisterComponent implements OnInit {
   }
 
   initializeForm(): void {
-    this.registerForm = new FormGroup({
-      username: new FormControl(),
-      password: new FormControl(),
-      confirmPassword: new FormControl()
+    this.registerForm = this.fb.group({
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
+      confirmPassword: new FormControl('', [Validators.required, this.matchPasswords('password')]),
     })
+  }
+
+  matchPasswords(matchTo: string): ValidatorFn {
+    return (control: AbstractControl) => {
+      return control?.value === control?.parent?.controls[matchTo].value ? null : {isMatching: true};
+    };
+  }
+
+  hasAnyError() {
+    return this.registerForm.get('username').hasError;
   }
 }
