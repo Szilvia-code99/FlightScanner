@@ -56,11 +56,37 @@ namespace API.Controllers
     [HttpDelete("delete")]
      [AllowAnonymous]
     public async Task<ActionResult<string>> Delete(int flightId) {  
-    Flight emp = _dataContext.Flights.Where(x => x.flightId == flightId).Single <Flight> ();  
-    _dataContext.Flights.Remove(emp);  
+    Flight fl = _dataContext.Flights.Where(x => x.flightId == flightId).Single <Flight> ();  
+    _dataContext.Flights.Remove(fl);  
     await _dataContext.SaveChangesAsync();  
     return "Record has successfully Deleted";  
-}  
+    }  
+
+     [HttpPut("update")]
+     [AllowAnonymous]
+    public async Task<ActionResult<string>> Update(int flightId, FlightDTO flightData) {  
+    Flight fl = _dataContext.Flights.Where(x => x.flightId == flightId).FirstOrDefault<Flight> ();  
+
+     if (fl != null)
+            {
+            fl.airlineName=flightData.airlineName; 
+            fl.origin=flightData.origin;
+            fl.destination=flightData.destination;
+            fl.departureTime=flightData.departureTime;
+            fl.arrivalTime=flightData.arrivalTime;
+            fl.totalSeats=flightData.totalSeats;
+            fl.price=flightData.price;
+
+          _dataContext.Entry(fl).State = EntityState.Modified;
+           await _dataContext.SaveChangesAsync();
+            return "Record has successfully Deleted";  
+            }
+            else
+            {
+                return NotFound();
+            }
+   
+    }  
     
     }
  }

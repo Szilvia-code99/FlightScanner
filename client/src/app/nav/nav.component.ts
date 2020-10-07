@@ -10,6 +10,8 @@ import { AccountService } from '../services/account.service';
 })
 export class NavComponent implements OnInit {
   //loadLoginComponent = false;
+  model: any = {};
+  loggedIn = false;
 
   constructor(public accountService: AccountService, private router: Router) {}
 
@@ -18,9 +20,17 @@ export class NavComponent implements OnInit {
   //loadLogInComponent() {
   //  this.loadLoginComponent = true;
   // }
-
+  login() {
+    this.accountService.login(this.model).subscribe(response => {
+      this.router.navigateByUrl('/app-flight');
+      this.loggedIn=true;
+    })
+  }
+ 
   logout() {
     this.accountService.logout();
     this.router.navigateByUrl('/');
   }
+
+
 }
