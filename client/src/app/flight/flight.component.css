@@ -6,10 +6,10 @@ a{
   .login-reg-panel{
       transform: translateY(-50%);
       text-align:center;
-      width:70%;
+      width:1000px;
       right:0;left:0;
       margin:auto;
-      height:400px;
+      height:500px;
       margin-top:350px;
       background-color:#FF1493;
   }
@@ -18,12 +18,36 @@ a{
       height:500px;
       position:absolute;
       top:-50px;
-      width:50%;
-      right:calc(50% - 50px);
+      width:30%;
+      right:calc(70% - 50px);
       transition:.3s ease-in-out;
       z-index:0;
       box-shadow: 0 0 15px 9px #00000096;
   }
+
+  .white-panel2{
+    background-color: rgba(255,255, 255, 1);
+    height:500px;
+    position:absolute;
+    top:-50px;
+    width:30%;
+    right:280px;
+    transition:.3s ease-in-out;
+    z-index:0;
+    box-shadow: 0 0 15px 9px #00000096;
+}
+
+.white-panel3{
+    background-color: rgba(255,255, 255, 1);
+    height:500px;
+    position:absolute;
+    top:-50px;
+    width:30%;
+    right:-80px;
+    transition:.3s ease-in-out;
+    z-index:0;
+    box-shadow: 0 0 15px 9px #00000096;
+}
   .login-reg-panel input[type="radio"]{
       position:relative;
       display:none;
@@ -55,15 +79,26 @@ a{
   }
   
   h2{
-  margin-top:20px;
+  margin-top:10px;
   margin-bottom:10px;
   }
   
   .form-group{
   padding-right:10px;
   padding-left:10px;
-  padding-top:5px;
-  padding-bottom:5px;
   }
+
+  .form-group2{
+    padding-right:10px;
+    padding-left:10px;
+    padding-top:3px;
+    padding-bottom:3px;
+    }
   
+    .btnUpdate{
+        top:50%;
+ }
   
+ .btnGet{
+     top:50%;
+ }

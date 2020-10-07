@@ -29,7 +29,7 @@ namespace API.Services
         public string CreateToken(User user)
         {
             var claims = new List<Claim> {
-                new Claim(JwtRegisteredClaimNames.NameId, user.userName)
+                new Claim(JwtRegisteredClaimNames.NameId, user.UserName)
             };
 
             // defines the security key, algorithm and digest for digital signatures

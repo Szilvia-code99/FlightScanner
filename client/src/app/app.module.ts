@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { FlightComponent } from './flight/flight.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FlightComponent } from './flight/flight.component';
     RegisterComponent,
     HomeComponent,
     FlightComponent,
+   
    ],
   imports: [
     BrowserModule,
@@ -26,6 +28,7 @@ import { FlightComponent } from './flight/flight.component';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

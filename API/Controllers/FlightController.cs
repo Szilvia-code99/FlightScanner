@@ -53,8 +53,8 @@ namespace API.Controllers
        return flightData;
         }
 
-    [HttpDelete("delete")]
-     [AllowAnonymous]
+    [HttpDelete("delete/{flightId}")]
+    [AllowAnonymous]
     public async Task<ActionResult<string>> Delete(int flightId) {  
     Flight fl = _dataContext.Flights.Where(x => x.flightId == flightId).Single <Flight> ();  
     _dataContext.Flights.Remove(fl);  

@@ -1,9 +1,6 @@
 <div class="login-reg-panel">
     <div class="register-info-box">
-      <label id="label-login" for="log-login-show" (click)="getFlights()" >View flights</label>
-      <div *ngFor="let flight of flights">
-        <p>airline name: {{flight.airlineName}}</p>
-      </div>
+    
       <input type="radio" name="active-log-panel" id="log-login-show">
     </div>
     <div class="white-panel">
@@ -78,6 +75,119 @@
     
          <button class="btn btn-primary btn-outline-succes my-1 my-sm-0" type="submit">Login</button>
     </form>
+</div>
+</div>
+
+<div class="white-panel2">
+  <div class="login-form">
+   <h2>Update Flight</h2>
+
+ <form  #updateFlightForm="ngForm" class="login-form mt-2 mt-md-0" (ngSubmit)="updateFlight()">
+
+  <div class="form-group2">
+    <input
+     name="flightId"
+     [(ngModel)]="model.flightId"
+     class="form-control mr-sm-2"
+     type="text"
+     placeholder="FlightId">
+  </div>
+  
+
+   <div class="form-group2">
+     <input
+      name="airlineName"
+      [(ngModel)]="model.airlineName"
+      class="form-control mr-sm-2"
+      type="text"
+      placeholder="AirlineName">
+   </div>
+   
+    <div class="form-group2">
+      <input
+      name="origin"
+      [(ngModel)]="model.origin"
+      class="form-control mr-sm-2"
+      type="text"
+      placeholder="Origin">
     </div>
 
-    <button class="btn btn-primary btn-outline-succes my-1 my-sm-0" (click)= "deleteFlight()"></button>
+    <div class="form-group2">
+     <input
+     name="destination"
+     [(ngModel)]="model.destination"
+     class="form-control mr-sm-2"
+     type="text"
+     placeholder="Destination">
+   </div>
+
+   <div class="form-group2">
+     <input
+     name="departureTime"
+     [(ngModel)]="model.departureTime"
+     class="form-control mr-sm-2"
+     type="text"
+     placeholder="DepartureTime">
+   </div>
+
+   <div class="form-group2">
+     <input
+     name="arrivalTime"
+     [(ngModel)]="model.arrivalTime"
+     class="form-control mr-sm-2"
+     type="text"
+     placeholder="ArrivalTime">
+   </div>
+ 
+   <div class="form-group2">
+     <input
+     name="totalSeats"
+     [(ngModel)]="model.totalSeats"
+     class="form-control mr-sm-2"
+     type="number"
+     placeholder="TotalSeats">
+   </div>
+
+   <div class="form-group2">
+     <input
+     name="price"
+     [(ngModel)]="model.price"
+     class="form-control mr-sm-2"
+     type="number"
+     placeholder="Price">
+   </div>
+ 
+      <button class="btnUpdate btn btn-primary btn-outline-succes my-1 my-sm-0" type="submit">Update</button>
+ </form>
+</div>
+</div>
+
+
+<div class="white-panel3">
+  <div class="login-form">
+   <h2>Delete Flight</h2>
+
+ <form  #deleteFlightForm="ngForm" class="login-form mt-2 mt-md-0" (ngSubmit)="deleteFlight()">
+
+  <div class="form-group2">
+    <input
+     name="flightId"
+     [(ngModel)]="deleteFlightId"
+     class="form-control mr-sm-2"
+     type="text"
+     placeholder="FlightId">
+  </div>
+
+  <button class="btn btn-primary btn-outline-succes my-1 my-sm-0" >Delete</button>
+  
+  <button class="btnGet btn btn-primary btn-outline-succes my-1 my-sm-0" (click)="getFlights()">View flights</button>
+  <div *ngFor="let flight of flights">
+    <p>airline name: {{flight.airlineName}}</p>
+  </div>
+</form>
+</div>
+</div>
+    
+ </div>
+
+    

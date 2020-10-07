@@ -50,20 +50,32 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Entities.User", b =>
                 {
-                    b.Property<int>("userId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<byte[]>("hash")
-                        .HasColumnType("BLOB");
-
-                    b.Property<byte[]>("salt")
-                        .HasColumnType("BLOB");
-
-                    b.Property<string>("userName")
+                    b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("userId");
+                    b.Property<string>("FirstName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("IdNumber")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<byte[]>("PasswordHash")
+                        .HasColumnType("BLOB");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .HasColumnType("BLOB");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Users");
                 });

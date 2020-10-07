@@ -28,7 +28,7 @@ export class FlightService {
   }
 
   deleteFlight(flightId: number) {
-  return this.http.delete<Flight>(this.baseUrl + 'flight/1').subscribe(
+  return this.http.delete<Flight>(this.baseUrl + `flight/delete/${flightId}`).subscribe(
     val => {
         console.error('DELETE call successful value returned in body', val);
     },

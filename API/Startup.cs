@@ -10,6 +10,8 @@ using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using API.Helpers;
+using AutoMapper;
 
 namespace API
 {
@@ -27,6 +29,7 @@ namespace API
         {
             // Register the TokenService with a scoped lifetime, the lifetime of a single request
             services.AddScoped<ITokenService, TokenService>(); 
+            services.AddAutoMapper(typeof(Automapper).Assembly);
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
             

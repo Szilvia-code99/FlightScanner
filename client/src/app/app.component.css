@@ -1,0 +1,7 @@
+
+  .background{
+    background-image: url(resources/travel.jpg);
+    height: 100vh; 
+    margin-top:10px;
+    width:100%;
+}

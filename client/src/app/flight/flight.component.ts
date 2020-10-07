@@ -9,6 +9,7 @@ import { FlightService } from '../services/flight.service';
 export class FlightComponent implements OnInit {
 model:any={};
 flights: any;
+deleteFlightId:any;
   constructor(private flightService: FlightService) { }
 
   ngOnInit(): void {
@@ -32,7 +33,10 @@ flights: any;
   }
 
   deleteFlight() {
-    this.flightService.deleteFlight(1);
+    this.flightService.deleteFlight(this.deleteFlightId);
+  }
+
+  updateFlight() {
   }
 
 

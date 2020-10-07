@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-sm navbar-dark">
   <!-- Brand -->
   <div class="container">
-  <a class="navbar-brand" >Logo</a>
+  <a class="navbar-brand" routerLink="/" >Logo</a>
 
   <!-- Links -->
   <ul class="navbar-nav">
@@ -14,15 +14,17 @@
     </li>
 
     <!-- Dropdown -->
-    <li class="nav-item dropdown"  >
-      <a *ngIf="loggedIn" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+    <div class="dropdown"  *ngIf="loggedIn"  dropdown>
+      <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
         Welcome, {{model.userName }} 
       </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" routerLink='/app-flight'>Go to CRUD testing</a>
-        <a class="dropdown-item" (click)="logout()">Logout</a>
-      </div>
-    </li>
+      <div class="dropdown-menu mt-3" *dropdownMenu>
+        <a routerLink='/' class="dropdown-item">Edit Profile</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" (click)="logout()" >Logout</a>
+    </div>
+
+    </div>
   </ul>
 
   <form *ngIf="!loggedIn" #LoginForm="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)="login()">

@@ -8,6 +8,7 @@ import { AccountService } from '../services/account.service';
 })
 export class RegisterComponent implements OnInit {
   model: any = {};
+  next = false;
   @Output() cancelRegister = new EventEmitter();
 
   constructor(private accountService: AccountService) { }
@@ -23,7 +24,14 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  cancel() {
+  cancel(): void {
     this.cancelRegister.emit(false);
+  }
+
+  nextForm(): void {
+    this.next = true;
+  }
+  back(): void {
+    this.next = false;
   }
 }
