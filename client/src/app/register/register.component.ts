@@ -11,12 +11,14 @@ export class RegisterComponent implements OnInit {
   model: any = {};
   next = false;
   @Output() cancelRegister = new EventEmitter();
-  registerForm: FormGroup;
+  userPasswordRegisterForm: FormGroup;
+  personalDataRegisterForm: FormGroup;
 
   constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
-    this.initializeForm();
+    this.initializeUserPasswordForm();
+    this.initializePersonalDataForm();
   }
 
   register(): void {
@@ -38,11 +40,20 @@ export class RegisterComponent implements OnInit {
     this.next = false;
   }
 
-  initializeForm(): void {
-    this.registerForm = new FormGroup({
+  initializeUserPasswordForm(): void {
+    this.userPasswordRegisterForm = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]),
-      confirmPassword: new FormControl('', [Validators.required, this.matchPasswords('password')]),
+      confirmPassword: new FormControl('', [Validators.required, this.matchPasswords('password')])
+    })
+  }
+
+  initializePersonalDataForm(): void {
+    this.personalDataRegisterForm = new FormGroup({
+      firstname: new FormControl('', Validators.required),
+      lastname: new FormControl('', Validators.required),
+      dateOfBirth: new FormControl('', Validators.required),
+      idnumber: new FormControl('', Validators.required)
     })
   }
 
