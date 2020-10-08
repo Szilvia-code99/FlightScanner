@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using API.Data;
 using API.Data.DTO;
 using API.Entities;
+using API.Helpers;
+using API.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,9 +16,16 @@ namespace API.Controllers
     {
         private readonly DataContext _dataContext;
 
-        public FlightController(DataContext dataContext)
+        private readonly FlightsRepository _flightRepository;
+
+        private readonly Automapper _autoMapper;
+
+        public FlightController(DataContext dataContext,FlightsRepository flightRepository, Automapper autoMapper)
         {
             _dataContext = dataContext;
+            _flightRepository=flightRepository;
+            _autoMapper=autoMapper;
+
         }
 
         [HttpGet]
@@ -35,31 +44,18 @@ namespace API.Controllers
 
 
         [HttpPost("create")]
-        public async Task<ActionResult<FlightDTO>> Register(FlightDTO flightData){
+        public async Task<ActionResult <FlightDTO>> Create(FlightDTO flightData){
+         var flightModel = _autoMapper.Map<Flight>(flightData);
 
-        var flight = new Flight{
-        airlineName=flightData.airlineName, 
-        origin=flightData.origin,
-        destination=flightData.destination,
-        departureTime=flightData.departureTime,
-        arrivalTime=flightData.arrivalTime,
-        totalSeats=flightData.totalSeats,
-        price=flightData.price
-        };
+         await  _flightRepository.CreateFlight(flightData);
 
-        _dataContext.Flights.Add(flight);
-        await _dataContext.SaveChangesAsync();
-         
-       return flightData;
+           return Ok();
         }
 
     [HttpDelete("delete/{flightId}")]
     [AllowAnonymous]
-    public async Task<ActionResult<string>> Delete(int flightId) {  
-    Flight fl = _dataContext.Flights.Where(x => x.flightId == flightId).Single <Flight> ();  
-    _dataContext.Flights.Remove(fl);  
-    await _dataContext.SaveChangesAsync();  
-    return "Record has successfully Deleted";  
+    public ActionResult Delete(int flightId) {  
+       flightRepository.DeleteFlight(flightId);
     }  
 
      [HttpPut("update")]

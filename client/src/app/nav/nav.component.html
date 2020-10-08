@@ -13,19 +13,12 @@
       <a class="nav-link" routerLink="/app-register" routerLinkActive='active'>Register</a>
     </li>
 
-    <!-- Dropdown -->
-    <div class="dropdown"  *ngIf="loggedIn"  dropdown>
-      <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-        Welcome, {{model.userName }} 
-      </a>
-      <div class="dropdown-menu mt-3" *dropdownMenu>
-        <a routerLink='/' class="dropdown-item">Edit Profile</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" (click)="logout()" >Logout</a>
-    </div>
-
-    </div>
+    <li class="nav-item" *ngIf="loggedIn">
+      <a class="nav-link">   Welcome, {{model.userName }} </a>
+    </li>
   </ul>
+  
+
 
   <form *ngIf="!loggedIn" #LoginForm="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)="login()">
     <div class="form-group">
