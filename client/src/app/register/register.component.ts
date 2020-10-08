@@ -12,7 +12,6 @@ export class RegisterComponent implements OnInit {
   next = false;
   @Output() cancelRegister = new EventEmitter();
   registerForm: FormGroup;
-  private fb: FormBuilder;
 
   constructor(private accountService: AccountService) { }
 
@@ -21,12 +20,11 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void {
-   /* this.accountService.register(this.model).subscribe(response =>{
+    this.accountService.register(this.model).subscribe(response => {
       console.log(response);
     }, error => {
       console.log(error);
-    });*/
-    console.log(this.registerForm.value);
+    });
   }
 
   cancel(): void {
@@ -41,9 +39,9 @@ export class RegisterComponent implements OnInit {
   }
 
   initializeForm(): void {
-    this.registerForm = this.fb.group({
+    this.registerForm = new FormGroup({
       username: new FormControl('', Validators.required),
-      password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]),
       confirmPassword: new FormControl('', [Validators.required, this.matchPasswords('password')]),
     })
   }
@@ -52,9 +50,5 @@ export class RegisterComponent implements OnInit {
     return (control: AbstractControl) => {
       return control?.value === control?.parent?.controls[matchTo].value ? null : {isMatching: true};
     };
-  }
-
-  hasAnyError() {
-    return this.registerForm.get('username').hasError;
   }
 }
