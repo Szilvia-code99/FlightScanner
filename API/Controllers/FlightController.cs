@@ -5,84 +5,81 @@ using API.Data;
 using API.Data.DTO;
 using API.Entities;
 using API.Helpers;
+using API.Interfaces;
 using API.Repositories;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
+    [AllowAnonymous]
     public class FlightController: BaseApiController
     {
         private readonly DataContext _dataContext;
 
-        private readonly FlightsRepository _flightRepository;
+        private readonly IFlightsRepository _flightRepository;
+         private readonly IMapper _mapper;
 
-        private readonly Automapper _autoMapper;
-
-        public FlightController(DataContext dataContext,FlightsRepository flightRepository, Automapper autoMapper)
+         //GET api/flight
+        public FlightController(DataContext dataContext,IFlightsRepository flightRepository,IMapper mapper)
         {
             _dataContext = dataContext;
             _flightRepository=flightRepository;
-            _autoMapper=autoMapper;
-
+            _mapper=mapper;
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<Flight>>> GetFligths()
         {
-          return await _dataContext.Flights.ToListAsync();
+            var flightItems = await _flightRepository.GetFlights();
+             if(flightItems != null){
+            return Ok(_mapper.Map<IEnumerable<FlightDTO>>(flightItems));
+          }
+          return NotFound();
         }
 
+        //GET api/flight/{id}
         [HttpGet("{id}")]
-        [Authorize]
+        public async Task<ActionResult<FlightDTO>> GetFlight(int id){
+          var flightItem = await _flightRepository.GetFlight(id);
 
-        public async Task<ActionResult<Flight>> GetFlight(int id){
-          return await _dataContext.Flights.FindAsync(id);
+          if(flightItem != null){
+            return Ok(_mapper.Map<FlightDTO>(flightItem));
+          }
+          return NotFound();
         }
 
 
         [HttpPost("create")]
         public async Task<ActionResult <FlightDTO>> Create(FlightDTO flightData){
-         var flightModel = _autoMapper.Map<Flight>(flightData);
+         var flightModel = _mapper.Map<Flight>(flightData);
+         
+        await  _flightRepository.CreateFlight(flightModel);
 
-         await  _flightRepository.CreateFlight(flightData);
-
-           return Ok();
+        return Ok(flightModel);
         }
 
-    [HttpDelete("delete/{flightId}")]
-    [AllowAnonymous]
-    public ActionResult Delete(int flightId) {  
-       flightRepository.DeleteFlight(flightId);
-    }  
+        [HttpDelete("delete/{flightId}")]
+        public ActionResult Delete(int flightId) {  
+          _flightRepository.DeleteFlight(flightId);
+          return Ok();
+        }  
 
-     [HttpPut("update")]
-     [AllowAnonymous]
-    public async Task<ActionResult<string>> Update(int flightId, FlightDTO flightData) {  
-    Flight fl = _dataContext.Flights.Where(x => x.flightId == flightId).FirstOrDefault<Flight> ();  
+        [HttpPut("update")]
+        public async Task<ActionResult> Update(FlightDTO flightData) {  
+        var flightModel =  await _flightRepository.GetFlight(flightData.flightId);
 
-     if (fl != null)
-            {
-            fl.airlineName=flightData.airlineName; 
-            fl.origin=flightData.origin;
-            fl.destination=flightData.destination;
-            fl.departureTime=flightData.departureTime;
-            fl.arrivalTime=flightData.arrivalTime;
-            fl.totalSeats=flightData.totalSeats;
-            fl.price=flightData.price;
+        if (flightModel == null){
+          return NotFound();
+        }
+         _mapper.Map(flightData,flightModel);
+         await _flightRepository.UpdateFlight(flightModel);
 
-          _dataContext.Entry(fl).State = EntityState.Modified;
-           await _dataContext.SaveChangesAsync();
-            return "Record has successfully Deleted";  
-            }
-            else
-            {
-                return NotFound();
-            }
-   
-    }  
-    
+         return Ok();
+
+        }  
+        
     }
  }

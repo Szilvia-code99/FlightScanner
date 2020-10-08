@@ -27,6 +27,16 @@ export class FlightService {
     );
   }
 
+  updateFlight(model: any){
+    return this.http.put(this.baseUrl + 'flight/update', model).pipe(
+      map((response: Flight) => {
+        const flight = response;
+        console.log(flight);
+        }
+      )
+    );
+  }
+
   deleteFlight(flightId: number) {
   return this.http.delete<Flight>(this.baseUrl + `flight/delete/${flightId}`).subscribe(
     val => {

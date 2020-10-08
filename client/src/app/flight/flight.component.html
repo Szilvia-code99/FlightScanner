@@ -9,7 +9,6 @@
   
     <form  #createFlightForm="ngForm" class="login-form mt-2 mt-md-0" (ngSubmit)="createFlight()">
   
-   
       <div class="form-group">
         <input
          name="airlineName"
@@ -73,7 +72,7 @@
         placeholder="Price">
       </div>
     
-         <button class="btn btn-primary btn-outline-succes my-1 my-sm-0" type="submit">Login</button>
+         <button class="btn btn-primary btn-outline-succes my-1 my-sm-0" type="submit">Create</button>
     </form>
 </div>
 </div>
@@ -87,9 +86,9 @@
   <div class="form-group2">
     <input
      name="flightId"
-     [(ngModel)]="model.flightId"
+     [(ngModel)]="modelUpdate.flightId"
      class="form-control mr-sm-2"
-     type="text"
+     type="number"
      placeholder="FlightId">
   </div>
   
@@ -97,7 +96,7 @@
    <div class="form-group2">
      <input
       name="airlineName"
-      [(ngModel)]="model.airlineName"
+      [(ngModel)]="modelUpdate.airlineName"
       class="form-control mr-sm-2"
       type="text"
       placeholder="AirlineName">
@@ -106,7 +105,7 @@
     <div class="form-group2">
       <input
       name="origin"
-      [(ngModel)]="model.origin"
+      [(ngModel)]="modelUpdate.origin"
       class="form-control mr-sm-2"
       type="text"
       placeholder="Origin">
@@ -115,7 +114,7 @@
     <div class="form-group2">
      <input
      name="destination"
-     [(ngModel)]="model.destination"
+     [(ngModel)]="modelUpdate.destination"
      class="form-control mr-sm-2"
      type="text"
      placeholder="Destination">
@@ -124,7 +123,7 @@
    <div class="form-group2">
      <input
      name="departureTime"
-     [(ngModel)]="model.departureTime"
+     [(ngModel)]="modelUpdate.departureTime"
      class="form-control mr-sm-2"
      type="text"
      placeholder="DepartureTime">
@@ -133,7 +132,7 @@
    <div class="form-group2">
      <input
      name="arrivalTime"
-     [(ngModel)]="model.arrivalTime"
+     [(ngModel)]="modelUpdate.arrivalTime"
      class="form-control mr-sm-2"
      type="text"
      placeholder="ArrivalTime">
@@ -142,7 +141,7 @@
    <div class="form-group2">
      <input
      name="totalSeats"
-     [(ngModel)]="model.totalSeats"
+     [(ngModel)]="modelUpdate.totalSeats"
      class="form-control mr-sm-2"
      type="number"
      placeholder="TotalSeats">
@@ -151,7 +150,7 @@
    <div class="form-group2">
      <input
      name="price"
-     [(ngModel)]="model.price"
+     [(ngModel)]="modelUpdate.price"
      class="form-control mr-sm-2"
      type="number"
      placeholder="Price">

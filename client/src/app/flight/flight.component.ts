@@ -7,9 +7,10 @@ import { FlightService } from '../services/flight.service';
   styleUrls: ['./flight.component.css']
 })
 export class FlightComponent implements OnInit {
-model:any={};
+model: any = {};
+modelUpdate: any = {};
 flights: any;
-deleteFlightId:any;
+deleteFlightId: any;
   constructor(private flightService: FlightService) { }
 
   ngOnInit(): void {
@@ -37,6 +38,12 @@ deleteFlightId:any;
   }
 
   updateFlight() {
+    this.flightService.updateFlight(this.modelUpdate).subscribe(response =>{
+      console.log(response);
+    }, error => {
+      console.log(error);
+    });
+    console.log(this.model);
   }
 
 

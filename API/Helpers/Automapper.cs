@@ -12,6 +12,7 @@ namespace API.Helpers
         public Automapper(){
           CreateMap<RegisterDTO,User>();
           CreateMap<FlightDTO,Flight>();
+          CreateMap<Flight,FlightDTO>();
         }
 
     }

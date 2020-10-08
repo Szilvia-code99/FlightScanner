@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,14 +22,19 @@ namespace API.Repositories
                 return await dataContext.Flights.ToListAsync();
             }
 
+         
             public async  Task<Flight> GetFlight(int flightId){
                 //  return await dataContext.Flights.FindAsync(flightId);
                 return await dataContext.Flights.FirstOrDefaultAsync(x => x.flightId == flightId);
             }
             public async  Task<Flight> CreateFlight(Flight flightData){
 
+                if (flightData == null){
+                    throw new ArgumentNullException(nameof(flightData));
+                }
                 var result= await dataContext.Flights.AddAsync(flightData);
                 await dataContext.SaveChangesAsync();
+                
                 return result.Entity;
                
             }
@@ -38,6 +44,7 @@ namespace API.Repositories
 
                     if (result != null)
                         {
+                        
                         result.airlineName=flightData.airlineName; 
                         result.origin=flightData.origin;
                         result.destination=flightData.destination;
@@ -62,5 +69,10 @@ namespace API.Repositories
                 }
                
             }
-   }
+
+        public bool SaveChanges()
+        {
+            return (dataContext.SaveChanges() >=0);
+        }
+    }
 }

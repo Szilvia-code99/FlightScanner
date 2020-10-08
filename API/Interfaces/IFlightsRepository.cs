@@ -12,6 +12,7 @@ namespace API.Interfaces
          Task<Flight> CreateFlight(Flight flight);
          Task<Flight> UpdateFlight(Flight flight);
          void DeleteFlight(int flightId);
+         bool SaveChanges();
 
     }
 }
