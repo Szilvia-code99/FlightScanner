@@ -9,6 +9,7 @@
 
      <form [formGroup]="userPasswordRegisterForm" class="login-form mt-2 mt-md-0" >
       <div class="form-group">
+        <label for="inputUsername">Username : </label>
         <input
         [class.is-invalid]='userPasswordRegisterForm.get("username").errors && userPasswordRegisterForm.get("username").touched'
         name="username"
@@ -21,6 +22,7 @@
       </div>
 
       <div class="form-group">
+        <label for="inputPassword">Password :</label>
         <input
         [class.is-invalid]='userPasswordRegisterForm.get("password").errors && userPasswordRegisterForm.get("password").touched'
         name="password"
@@ -38,6 +40,7 @@
       </div>
 
       <div class="form-group">
+        <label for="inputConfirmedPassword">Confirm Password : </label>
         <input
         [class.is-invalid]='userPasswordRegisterForm.get("confirmPassword").errors && userPasswordRegisterForm.get("confirmPassword").touched'
         name="confirmpassword"
@@ -56,6 +59,7 @@
 
   <form *ngIf="next" [formGroup]="personalDataRegisterForm" class="login-form mt-2 mt-md-0" (ngSubmit)="register()">
     <div class="form-group">
+      <label for="inputFirstname">Firstname : </label>
       <input
       [class.is-invalid]='personalDataRegisterForm.get("firstname").errors && personalDataRegisterForm.get("firstname").touched'
       name="firstname"
@@ -69,6 +73,7 @@
      </div>
 
     <div class="form-group">
+      <label for="inputLastname">Lastname : </label>
       <input
       [class.is-invalid]='personalDataRegisterForm.get("lastname").errors && personalDataRegisterForm.get("lastname").touched'
       name="lastname"
@@ -82,6 +87,7 @@
     </div>
 
     <div class="form-group">
+      <label for="inputDateOfBirth">Date of birth : </label>
       <input
       [class.is-invalid]='personalDataRegisterForm.get("dateOfBirth").errors && personalDataRegisterForm.get("dateOfBirth").touched'
       name="dateOfBirth"
@@ -95,6 +101,7 @@
     </div>  
 
     <div class="form-group">
+      <label for="inputSerialID">Serial ID: </label>
       <input
       [class.is-invalid]='personalDataRegisterForm.get("idnumber").errors && personalDataRegisterForm.get("idnumber").touched'
       name="idnumber"
