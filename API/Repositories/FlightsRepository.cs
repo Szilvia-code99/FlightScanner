@@ -76,7 +76,7 @@ namespace API.Repositories
             return (dataContext.SaveChanges() >=0);
         }
 
-        public async Task<IEnumerable<Flight>> SearchFlights(FlightDTO flight)
+        public async Task<IEnumerable<Flight>> SearchFlights(Flight flight)
         {
            var flights = await dataContext.Flights.Where(x => x.origin == flight.origin
                                                 && x.destination == flight.destination

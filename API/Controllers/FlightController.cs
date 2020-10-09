@@ -44,11 +44,10 @@ namespace API.Controllers
         [HttpGet("search")]
         public async Task<ActionResult<IEnumerable<Flight>>> SearchFlights(FlightDTO flightData){
         //  string origin/*, string destination, DateTime departure, DateTime arrival*/){
-          
-          var flights= await _flightRepository.SearchFlights(flightData);
+           var flightModel = _mapper.Map<Flight>(flightData);
+          var flights= await _flightRepository.SearchFlights(flightModel);
           if(flights != null){
             return Ok(_mapper.Map<IEnumerable<FlightDTO>>(flights));
-            //return NoContent();
           }
           return NotFound();
         }
