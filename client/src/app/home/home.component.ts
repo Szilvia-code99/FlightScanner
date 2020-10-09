@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FlightService } from '../services/flight.service';
 
 @Component({
   selector: 'app-home',
@@ -7,20 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  model: any = {};
   registerMode = false;
   users: any;
-  //loadLoginComponent = false;
+  flights: any;
+  model2: any = { origin : 'abudabi', destination: 'paris', departureTime: '2020-09-09', arrivalTime: '2020-09-10'};
+  // loadLoginComponent = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private flightService: FlightService) { }
 
   ngOnInit(): void {
   }
 
-  registerToggle() {
+  registerToggle(): void {
     this.registerMode = !this.registerMode;
   }
 
-  cancelRegisterMode(event: boolean) {
+  cancelRegisterMode(event: boolean): void{
     this.registerMode = event;
   }
 
@@ -30,5 +34,13 @@ export class HomeComponent implements OnInit {
 
   getUsers(){
     this.http.get('http://localhost:5001/api/users').subscribe(users => this.users = users);
+  }
+
+  searchFlight() {
+    this.flightService.searchFlights(this.model2).subscribe(response => {
+      this.flights = response;
+    }, error => {
+      console.log(error);
+    });
   }
 }

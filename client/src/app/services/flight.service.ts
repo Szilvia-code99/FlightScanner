@@ -51,5 +51,9 @@ export class FlightService {
   );
   }
 
+  searchFlights(model: any){
+    return this.http.get(
+      'http://localhost:5001/api/flight/search', model);
+  }
   
 }

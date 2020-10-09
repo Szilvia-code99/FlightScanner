@@ -10,9 +10,9 @@ namespace API.Data
     public  class Seed {
         
         public static async Task SeedUsers(DataContext context){
-          //  if (await context.Users.AnyAsync()) return;
+            //if (await context.Users.AnyAsync()) return;
         
-         var userData = await System.IO.File.ReadAllTextAsync("Data/myJsonFile0.json");
+     /*    var userData = await System.IO.File.ReadAllTextAsync("Data/myJsonFile0.json");
          var user = JsonSerializer.Deserialize<User>(userData);
 
          
@@ -23,7 +23,7 @@ namespace API.Data
              context.Users.Add(user);
              
          
-         await context.SaveChangesAsync();
+         await context.SaveChangesAsync();*/
         }
     }
 }

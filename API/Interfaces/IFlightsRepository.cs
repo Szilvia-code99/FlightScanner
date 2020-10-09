@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using API.Data.DTO;
 using API.Entities;
 
 namespace API.Interfaces
@@ -13,6 +15,7 @@ namespace API.Interfaces
          Task<Flight> UpdateFlight(Flight flight);
          void DeleteFlight(int flightId);
          bool SaveChanges();
+         Task<IEnumerable<Flight>> SearchFlights(FlightDTO flight);
 
     }
 }

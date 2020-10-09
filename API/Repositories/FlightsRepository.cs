@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
+using API.Data.DTO;
 using API.Entities;
 using API.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -40,7 +41,7 @@ namespace API.Repositories
             }
             public async Task<Flight> UpdateFlight(Flight flightData){
 
-               var result = await dataContext.Flights.FirstOrDefaultAsync(x => x.flightId == flightData.flightId);  
+               var result = await dataContext.Flights.FirstOrDefaultAsync(x => x.flightId == flightData.flightId && x.airlineName == flightData.airlineName);
 
                     if (result != null)
                         {
@@ -74,5 +75,19 @@ namespace API.Repositories
         {
             return (dataContext.SaveChanges() >=0);
         }
+
+        public async Task<IEnumerable<Flight>> SearchFlights(FlightDTO flight)
+        {
+           var flights = await dataContext.Flights.Where(x => x.origin == flight.origin
+                                                && x.destination == flight.destination
+                                                //&& x.departureTime == flight.departureTime
+                                               // && x.arrivalTime == flight.arrivalTime
+                                               ).ToListAsync(); 
+                                               
+            return flights;
+        }
+
+
+
     }
 }

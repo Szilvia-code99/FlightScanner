@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -34,8 +35,20 @@ namespace API.Controllers
         public async Task<ActionResult<IEnumerable<Flight>>> GetFligths()
         {
             var flightItems = await _flightRepository.GetFlights();
-             if(flightItems != null){
+           if(flightItems != null){
             return Ok(_mapper.Map<IEnumerable<FlightDTO>>(flightItems));
+          }
+          return NotFound();
+        }
+
+        [HttpGet("search")]
+        public async Task<ActionResult<IEnumerable<Flight>>> SearchFlights(FlightDTO flightData){
+        //  string origin/*, string destination, DateTime departure, DateTime arrival*/){
+          
+          var flights= await _flightRepository.SearchFlights(flightData);
+          if(flights != null){
+            return Ok(_mapper.Map<IEnumerable<FlightDTO>>(flights));
+            //return NoContent();
           }
           return NotFound();
         }
@@ -50,6 +63,7 @@ namespace API.Controllers
           }
           return NotFound();
         }
+
 
 
         [HttpPost("create")]
