@@ -41,16 +41,25 @@ namespace API.Controllers
           return NotFound();
         }
 
-        [HttpGet("search")]
-        public async Task<ActionResult<IEnumerable<Flight>>> SearchFlights(FlightDTO flightData){
-        //  string origin/*, string destination, DateTime departure, DateTime arrival*/){
-           var flightModel = _mapper.Map<Flight>(flightData);
-          var flights= await _flightRepository.SearchFlights(flightModel);
+       /* [HttpGet("search/{flightData}")]
+        public async Task<ActionResult<IEnumerable<Flight>>> SearchFlights( SearchFlightDTO flightData){
+          SearchFlightDTO flightDataa= new SearchFlightDTO();
+          flightData.origin="abudabi";
+          /*flightData.destination="paris";
+          DateTime date1 = new DateTime(2020, 09, 09);   
+          flightData.departureTime=date1;
+           DateTime date2 = new DateTime(2020, 09, 10);   
+          flightData.arrivalTime=date2;
+
+
+        //  string origin, string destination, DateTime departure, DateTime arrival){
+      //     var flightModel = _mapper.Map<Flight>(flightData);
+          var flights= await _flightRepository.SearchFlights(flightDataa);
           if(flights != null){
-            return Ok(_mapper.Map<IEnumerable<FlightDTO>>(flights));
+            return Ok(flights);
           }
           return NotFound();
-        }
+        }*/
 
         //GET api/flight/{id}
         [HttpGet("{id}")]
@@ -67,7 +76,7 @@ namespace API.Controllers
 
         [HttpPost("create")]
         public async Task<ActionResult <FlightDTO>> Create(FlightDTO flightData){
-         var flightModel = _mapper.Map<Flight>(flightData);
+        var flightModel = _mapper.Map<Flight>(flightData);
          
         await  _flightRepository.CreateFlight(flightModel);
 

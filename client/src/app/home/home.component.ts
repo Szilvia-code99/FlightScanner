@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   registerMode = false;
   users: any;
   flights: any;
-  model2: any = { origin : 'abudabi', destination: 'paris', departureTime: '2020-09-09', arrivalTime: '2020-09-10'};
+  birthday="salalala";
   // loadLoginComponent = false;
 
   constructor(private http: HttpClient, private flightService: FlightService) { }
@@ -28,17 +28,18 @@ export class HomeComponent implements OnInit {
     this.registerMode = event;
   }
 
-  //loadLogInComponent() {
-  // this.loadLoginComponent = true;
-  //}
 
   getUsers(){
     this.http.get('http://localhost:5001/api/users').subscribe(users => this.users = users);
   }
 
   searchFlight() {
-    this.flightService.searchFlights(this.model).subscribe( error => {
+    this.flightService.searchFlights(this.model).subscribe(response =>{
+      this.flights = response;
+      console.log(response);
+    }, error => {
       console.log(error);
     });
+    console.log(this.model);
   }
 }

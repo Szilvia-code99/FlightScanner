@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NgModel } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Flight } from '../models/flight';
 
@@ -57,9 +59,20 @@ export class FlightService {
   );
   }
 
-  searchFlights(model: any){
-    return this.http.get(
-      'http://localhost:5001/api/flight/search', model);
-  }
-  
+  searchFlights(model: any): Observable<Flight[]> {
+    console.log(model.departureTime);
+    return this.http
+     .get<Flight[]>(
+     ' http://localhost:5001/api/flight',
+       this.httpOptions
+     )
+     .pipe(
+       map((flights) => flights.filter((flight) => (flight.origin === model.origin
+                                                   && flight.destination === model.destination
+                                                   && flight.departureTime >= model.departureTime
+                                                   && flight.arrivalTime <= model.arrivalTime) ))
+                                                   //2020-09-07T:00:00:00 datetime format
+     );
+    
+ }
 }

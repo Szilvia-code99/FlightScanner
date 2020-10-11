@@ -44,9 +44,9 @@
         type="datetime"
         placeholder="ArrivalTime">
       </div>
-
     
-         <button class="btn btn-primary btn-outline-succes my-1 my-sm-0" type="submit">Search</button>
+    
+         <button [appButtonColorChanging]="'yellow'" class="btn  btn-outline-succes my-1 my-sm-0" type="submit">Search</button>
     </form>
 
     
@@ -58,29 +58,23 @@
     <thead  class="thead-dark">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">AirlineName</th>
+        <th scope="col">Origin</th>
+        <th scope="col">Destination</th>
+        <th scope="col">DepartureTime</th>
+        <th scope="col">ArrivalTime</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
+        <tr class="rows" *ngFor="let flight of flights">
+          <th scope="row"></th>
+          <td>{{flight.airlineName}}</td>
+          <td>{{flight.origin}}</td>
+          <td>{{flight.destination}}</td>
+          <td>{{flight.departureTime}}</td>
+          <td>{{flight.arrivalTime}}</td>
+        </tr>
+     
+     
     </tbody>
   </table>

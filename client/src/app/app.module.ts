@@ -12,6 +12,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { FlightComponent } from './flight/flight.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ButtonColorChangingDirective } from './button-color-changing.directive';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RegisterComponent,
     HomeComponent,
     FlightComponent,
+    ButtonColorChangingDirective,
+    NotFoundComponent,
    ],
   imports: [
     BrowserModule,

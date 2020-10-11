@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Flight } from '../models/flight';
 import { FlightService } from '../services/flight.service';
 
 @Component({
@@ -30,7 +31,9 @@ deleteFlightId: any;
       this.flights = response;
     }, error => {
       console.log(error);
-    })
+      
+    });
+    console.log(this.flights);
   }
 
   deleteFlight() {
@@ -44,6 +47,17 @@ deleteFlightId: any;
       console.log(error);
     });
     console.log(this.model);
+  }
+
+  searchFlight() {
+
+    console.log(this.model);
+    this.flightService.searchFlights(this.model).subscribe(response => {
+      this.flights = response;
+      console.log(this.flights);
+    }, error => {
+      console.log(error);
+    });
   }
 
 

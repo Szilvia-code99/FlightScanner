@@ -15,7 +15,6 @@ namespace API.Interfaces
          Task<Flight> UpdateFlight(Flight flight);
          void DeleteFlight(int flightId);
          bool SaveChanges();
-         Task<IEnumerable<Flight>> SearchFlights(Flight flight);
 
     }
 }

@@ -76,16 +76,16 @@ namespace API.Repositories
             return (dataContext.SaveChanges() >=0);
         }
 
-        public async Task<IEnumerable<Flight>> SearchFlights(Flight flight)
+    /*    public async Task<IEnumerable<Flight>> SearchFlights(SearchFlightDTO flight)
         {
            var flights = await dataContext.Flights.Where(x => x.origin == flight.origin
-                                                && x.destination == flight.destination
+                                              //  && x.destination == flight.destination
                                                 //&& x.departureTime == flight.departureTime
                                                // && x.arrivalTime == flight.arrivalTime
                                                ).ToListAsync(); 
                                                
             return flights;
-        }
+        }*/
 
 
 

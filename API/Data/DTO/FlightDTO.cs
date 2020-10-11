@@ -5,21 +5,21 @@ namespace API.Data.DTO
 {
     public class FlightDTO
     {
-         // [Required]
+         [Required]
         public int flightId { get; set; }
-       //   [Required]
+         [Required]
         public string airlineName { get; set; }
           [Required]
         public string origin { get; set; }
         [Required]
         public string destination { get; set; }
-        // [Required]
+         [Required]
         public DateTime departureTime {get; set;}
-         //[Required]
+         [Required]
         public DateTime arrivalTime {get; set;}
-        //  [Required]
+         [Required]
         public int totalSeats {get;set;}
-         // [Required]
+          [Required]
         public float price {get;set;}
     }
 }

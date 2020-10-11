@@ -11,8 +11,8 @@
   
       <div class="form-group">
         <input
+        [(ngModel)]="model.airlineName"
          name="airlineName"
-         [(ngModel)]="model.airlineName"
          class="form-control mr-sm-2"
          type="text"
          placeholder="AirlineName">
@@ -71,7 +71,7 @@
         type="number"
         placeholder="Price">
       </div>
-    
+
          <button class="btn btn-primary btn-outline-succes my-1 my-sm-0" type="submit">Create</button>
     </form>
 </div>

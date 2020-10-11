@@ -36,6 +36,7 @@ export class RegisterComponent implements OnInit {
   nextForm(): void {
     this.next = true;
   }
+  
   back(): void {
     this.next = false;
   }
@@ -45,7 +46,7 @@ export class RegisterComponent implements OnInit {
       username: new FormControl('', Validators.required),
       password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]),
       confirmPassword: new FormControl('', [Validators.required, this.matchPasswords('password')])
-    })
+    });
   }
 
   initializePersonalDataForm(): void {
@@ -54,7 +55,7 @@ export class RegisterComponent implements OnInit {
       lastname: new FormControl('', Validators.required),
       dateOfBirth: new FormControl('', Validators.required),
       idnumber: new FormControl('', Validators.required)
-    })
+    });
   }
 
   matchPasswords(matchTo: string): ValidatorFn {
