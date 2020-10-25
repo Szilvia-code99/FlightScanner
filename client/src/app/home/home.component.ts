@@ -12,12 +12,13 @@ export class HomeComponent implements OnInit {
   registerMode = false;
   users: any;
   flights: any;
-  birthday="salalala";
+  birthday= "salalala";
   // loadLoginComponent = false;
 
   constructor(private http: HttpClient, private flightService: FlightService) { }
 
   ngOnInit(): void {
+   this.flightService.getFlights().subscribe(res=>this.flights=res);
   }
 
   registerToggle(): void {

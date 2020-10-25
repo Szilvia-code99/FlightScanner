@@ -14,6 +14,9 @@ import { FlightComponent } from './flight/flight.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ButtonColorChangingDirective } from './button-color-changing.directive';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { StoreModule } from '@ngrx/store';
+import { flightReducer } from './flight/store/flight-reducer';
+import * as fromFlightList from './flight/store/flight-reducer';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BrowserAnimationsModule,
     FormsModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({flightList: flightReducer}),
   ],
   providers: [],
   bootstrap: [AppComponent]

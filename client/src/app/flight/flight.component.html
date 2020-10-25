@@ -81,12 +81,12 @@
   <div class="login-form">
    <h2>Update Flight</h2>
 
- <form  #updateFlightForm="ngForm" class="login-form mt-2 mt-md-0" (ngSubmit)="updateFlight()">
+ <form  #updateFlightForm="ngForm" class="login-form mt-2 mt-md-0" (ngSubmit)="updateFlight(updateFlightForm)">
 
   <div class="form-group2">
     <input
      name="flightId"
-     [(ngModel)]="modelUpdate.flightId"
+     ngModel
      class="form-control mr-sm-2"
      type="number"
      placeholder="FlightId">
@@ -96,7 +96,7 @@
    <div class="form-group2">
      <input
       name="airlineName"
-      [(ngModel)]="modelUpdate.airlineName"
+      ngModel
       class="form-control mr-sm-2"
       type="text"
       placeholder="AirlineName">
@@ -105,7 +105,7 @@
     <div class="form-group2">
       <input
       name="origin"
-      [(ngModel)]="modelUpdate.origin"
+      ngModel
       class="form-control mr-sm-2"
       type="text"
       placeholder="Origin">
@@ -114,7 +114,7 @@
     <div class="form-group2">
      <input
      name="destination"
-     [(ngModel)]="modelUpdate.destination"
+     ngModel
      class="form-control mr-sm-2"
      type="text"
      placeholder="Destination">
@@ -123,7 +123,7 @@
    <div class="form-group2">
      <input
      name="departureTime"
-     [(ngModel)]="modelUpdate.departureTime"
+     ngModel
      class="form-control mr-sm-2"
      type="text"
      placeholder="DepartureTime">
@@ -132,7 +132,7 @@
    <div class="form-group2">
      <input
      name="arrivalTime"
-     [(ngModel)]="modelUpdate.arrivalTime"
+     ngModel
      class="form-control mr-sm-2"
      type="text"
      placeholder="ArrivalTime">
@@ -141,7 +141,7 @@
    <div class="form-group2">
      <input
      name="totalSeats"
-     [(ngModel)]="modelUpdate.totalSeats"
+     ngModel
      class="form-control mr-sm-2"
      type="number"
      placeholder="TotalSeats">
@@ -150,7 +150,7 @@
    <div class="form-group2">
      <input
      name="price"
-     [(ngModel)]="modelUpdate.price"
+     ngModel
      class="form-control mr-sm-2"
      type="number"
      placeholder="Price">
@@ -180,7 +180,7 @@
   <button class="btn btn-primary btn-outline-succes my-1 my-sm-0" >Delete</button>
   
   <button class="btnGet btn btn-primary btn-outline-succes my-1 my-sm-0" (click)="getFlights()">View flights</button>
-  <div *ngFor="let flight of flights">
+  <div *ngFor="let flight of (flightListState | async).flightListState">
     <p>airline name: {{flight.airlineName}}</p>
   </div>
 </form>
@@ -188,5 +188,32 @@
 </div>
     
  </div>
+
+ 
+<table class="table">
+  <thead  class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">AirlineName</th>
+      <th scope="col">Origin</th>
+      <th scope="col">Destination</th>
+      <th scope="col">DepartureTime</th>
+      <th scope="col">ArrivalTime</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr class="rows" *ngFor="let flight of (flightListState | async).flights" > 
+        <th scope="row"></th>
+        <td>{{flight.airlineName}}</td>
+        <td>{{flight.origin}}</td>
+        <td>{{flight.destination}}</td>
+        <td>{{flight.departureTime}}</td>
+        <td>{{flight.arrivalTime}}</td>
+      </tr>
+   
+   
+  </tbody>
+</table>
+
 
     
