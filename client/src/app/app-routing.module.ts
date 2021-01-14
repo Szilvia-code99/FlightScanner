@@ -6,7 +6,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
+  { path: '', component: RegisterComponent},
   { path: 'app-register', component: RegisterComponent,
   children: [
     {
@@ -15,7 +15,10 @@ const routes: Routes = [
     },
    
   ], },
+  
   { path: 'app-flight', component: FlightComponent },
+  { path: 'app-home', component: HomeComponent },
+
   //{ path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 

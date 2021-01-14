@@ -44,7 +44,6 @@ editedItem: FlightModel;
         }
       }
     );
-    console.log("hi");
   }
 
   createFlight(): void {
@@ -71,15 +70,15 @@ editedItem: FlightModel;
   }
 
   updateFlight(form: NgForm) {
-    const value = form.value;
+   /* const value = form.value;
     const newFlight = new FlightModel(value.airlineName,value.origin,value.destination,value.departureTime,value.arrivalTime,value.totalSeats,value.price)
     this.store.dispatch(
     new FlightListActions.UpdateFlight({
        flight: newFlight
      })
-    );
+    );*/
 
-  /*  this.flightService.updateFlight(this.modelUpdate).subscribe(response =>{
+    this.flightService.updateFlight(this.modelUpdate).subscribe(response =>{
       console.log(response);
     }, error => {
       console.log(error);

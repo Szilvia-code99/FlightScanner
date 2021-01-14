@@ -1,16 +1,17 @@
 <nav class="navbar navbar-expand-sm navbar-dark">
   <!-- Brand -->
   <div class="container">
-  <a class="navbar-brand" routerLink="/" >Logo</a>
+  <a *ngIf="loggedIn" class="navbar-brand" routerLink="/app-home" >
+    <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon></a>
 
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" routerLink="/app-flight" routerLinkActive='active'>Flights</a>
+      <a *ngIf="loggedIn" class="nav-link" routerLink="/app-flight" routerLinkActive='active'>Flights</a>
     </li>
   
     <li class="nav-item">
-      <a class="nav-link" routerLink="/app-register" routerLinkActive='active'>Register</a>
+      <a  class="nav-link" routerLink="/app-register" routerLinkActive='active'>Register</a>
     </li>
 
     <li class="nav-item" *ngIf="loggedIn">

@@ -54,14 +54,14 @@ a{
   }
   
   h2{
-  margin-top:10px;
+  margin-top:5px;
   margin-bottom:10px;
   }
   
   .form-group{
   padding-right:100px;
   padding-left:100px;
-  padding-top:10px;
+  padding-top:5px;
   padding-bottom:10px;
   }
 
@@ -74,5 +74,9 @@ a{
 
 label {
     display: flex;
-    color: red;
+    color: black;
+  }
+
+  .register-form2{
+      margin-top:0px;
   }

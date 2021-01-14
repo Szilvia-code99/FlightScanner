@@ -7,7 +7,7 @@
      <div class="login-form">
       <h2>Register</h2>
 
-     <form [formGroup]="userPasswordRegisterForm" class="login-form mt-2 mt-md-0" >
+     <form *ngIf="!next" [formGroup]="userPasswordRegisterForm" class="register-form1 mt-2 mt-md-0" >
       <div class="form-group">
         <label for="inputUsername">Username : </label>
         <input
@@ -57,7 +57,7 @@
       <button [disabled]='!userPasswordRegisterForm.valid' class="btn btn-primary btn-outline-succes my-1 my-sm-0" (click)="nextForm()" type="button">Next</button>
     </form>
 
-  <form *ngIf="next" [formGroup]="personalDataRegisterForm" class="login-form mt-2 mt-md-0" (ngSubmit)="register()">
+  <form *ngIf="next" [formGroup]="personalDataRegisterForm" class="register-form2 mt-2 mt-md-0" (ngSubmit)="register()">
     <div class="form-group">
       <label for="inputFirstname">Firstname : </label>
       <input

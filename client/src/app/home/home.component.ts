@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
     this.flightService.searchFlights(this.model).subscribe(response =>{
       this.flights = response;
       console.log(response);
+      console.log(this.flights);
     }, error => {
       console.log(error);
     });
